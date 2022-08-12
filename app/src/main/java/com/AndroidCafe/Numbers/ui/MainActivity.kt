@@ -3,13 +3,10 @@ package com.AndroidCafe.Numbers.ui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.AndroidCafe.Numbers.R
-import com.AndroidCafe.Numbers.ui.theme.NewEmptyComposeAppTheme
-
+import com.AndroidCafe.Numbers.ui.screens.NumbersScreen
+import com.AndroidCafe.Numbers.ui.theme.NumbersTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,8 +19,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(useSystemUIController: Boolean = true) {
-    NewEmptyComposeAppTheme(useSystemUIController = useSystemUIController) {
-        Text(text = stringResource(id = R.string.hello_android))
+    NumbersTheme(useSystemUIController = useSystemUIController) {
+        NumbersScreen()
     }
 }
 
