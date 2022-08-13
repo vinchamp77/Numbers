@@ -13,7 +13,10 @@ import androidx.compose.ui.unit.sp
 import com.AndroidCafe.Numbers.ui.theme.NumbersTheme
 
 @Composable
-fun UpperUI(modifier: Modifier = Modifier) {
+fun UpperUI(
+    modifier: Modifier = Modifier,
+    onRestartClick: () -> Unit,
+) {
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.SpaceEvenly,
@@ -24,10 +27,8 @@ fun UpperUI(modifier: Modifier = Modifier) {
         )
         Text(
             text = "0.0",
-            fontSize = 30.sp,
-            fontWeight = FontWeight.ExtraBold,
         )
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = onRestartClick) {
             Text(
                 text = "RESTART",
             )
@@ -43,6 +44,6 @@ fun UpperUI(modifier: Modifier = Modifier) {
 @Composable
 private fun Preview() {
     NumbersTheme {
-        UpperUI()
+        UpperUI(onRestartClick = {})
     }
 }

@@ -35,7 +35,11 @@ fun NumbersScreen() {
     ) {
         UpperUI(
             modifier = Modifier
-                .weight(0.4f)
+                .weight(0.4f),
+            onRestartClick = {
+                randomNumbers.clear()
+                randomNumbers.addAll(genRandomNumbers())
+            }
         )
         LowerUI(
             modifier = Modifier.weight(0.6f),
