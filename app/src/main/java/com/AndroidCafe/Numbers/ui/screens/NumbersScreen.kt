@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.AndroidCafe.Numbers.ui.screens.Utils.genRandomNumbers
+import com.AndroidCafe.Numbers.ui.theme.NumbersTheme
 
 @Composable
 fun NumbersScreen() {
@@ -33,7 +34,8 @@ fun NumbersScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         UpperUI(
-            modifier = Modifier.weight(0.4f)
+            modifier = Modifier
+                .weight(0.4f)
         )
         LowerUI(
             modifier = Modifier.weight(0.6f),
@@ -45,9 +47,11 @@ fun NumbersScreen() {
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
-fun NumbersScreenPreview() {
-    NumbersScreen()
+private fun NumbersScreenPreview() {
+    NumbersTheme() {
+        NumbersScreen()
+    }
 }
+
