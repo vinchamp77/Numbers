@@ -11,10 +11,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.AndroidCafe.Numbers.ui.theme.NumbersTheme
+import org.w3c.dom.Text
 
 @Composable
 fun UpperUI(
     modifier: Modifier = Modifier,
+    currentTime: String,
     onRestartClick: () -> Unit,
 ) {
     Column(
@@ -22,16 +24,10 @@ fun UpperUI(
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text(
-            text = "YOUR BEST TIME: ?",
-        )
-        Text(
-            text = "0.0",
-        )
+        Text(text = "YOUR BEST TIME: ?")
+        Text(text = currentTime)
         Button(onClick = onRestartClick) {
-            Text(
-                text = "RESTART",
-            )
+            Text(text = "RESTART")
         }
         Text(
             text ="Touch from 1 to 50 as fast as you can!",
@@ -44,6 +40,9 @@ fun UpperUI(
 @Composable
 private fun Preview() {
     NumbersTheme {
-        UpperUI(onRestartClick = {})
+        UpperUI(
+            currentTime = "0.0",
+            onRestartClick = {}
+        )
     }
 }

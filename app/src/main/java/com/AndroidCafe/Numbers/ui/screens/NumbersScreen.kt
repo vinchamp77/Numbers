@@ -27,9 +27,10 @@ fun NumbersScreen() {
     ) {
         UpperUI(
             modifier = Modifier.weight(0.4f),
+            currentTime = "%.1f".format(viewModel.currentTime),
             onRestartClick = {
                 viewModel.onRestartClick()
-            }
+            },
         )
         LowerUI(
             modifier = Modifier.weight(0.6f),
