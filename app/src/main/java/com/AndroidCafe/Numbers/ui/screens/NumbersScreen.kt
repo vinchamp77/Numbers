@@ -28,14 +28,14 @@ fun NumbersScreen() {
         UpperUI(
             modifier = Modifier.weight(0.4f),
             onRestartClick = {
-                viewModel.generateRandomNumbers()
+                viewModel.onRestartClick()
             }
         )
         LowerUI(
             modifier = Modifier.weight(0.6f),
             data = viewModel.displayNumbers,
             onNumberClick = { index ->
-
+                viewModel.onNumberClick(index)
             }
         )
     }
