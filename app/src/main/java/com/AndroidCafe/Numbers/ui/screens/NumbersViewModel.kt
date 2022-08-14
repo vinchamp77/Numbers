@@ -5,10 +5,9 @@ import androidx.lifecycle.ViewModel
 
 class NumbersViewModel : ViewModel() {
 
+    val displayNumbers = mutableStateListOf<Number>()
+
     private lateinit var randomNumbers:List<Int>
-
-    val displayNumbers = mutableStateListOf<Int>()
-
     private var currentIndex = 0
 
     init {
@@ -20,7 +19,11 @@ class NumbersViewModel : ViewModel() {
 
         displayNumbers.clear()
         //fromIndex and toIndex are exclusive
-        displayNumbers.addAll(randomNumbers.subList(fromIndex = 0, toIndex = 25))
+        val randomValues = randomNumbers.subList(fromIndex = 0, toIndex = 25)
+        for(value in randomValues) {
+            displayNumbers.add(Number(value))
+        }
+
         currentIndex = 24
     }
 

@@ -14,7 +14,7 @@ import com.AndroidCafe.Numbers.ui.theme.NumbersTheme
 @Composable
 fun LowerUI(
     modifier: Modifier = Modifier,
-    data: List<Int>,
+    data: List<Number>,
     onNumberClick: (Int) -> Unit,
 ) {
     Column(
@@ -33,7 +33,7 @@ fun LowerUI(
                     val index = row * 5 + col
                     NumberButton(
                         //modifier = modifier.fillMaxSize(),
-                        text = data[index].toString(),
+                        text = data[index].value.toString(),
                         onClick = { onNumberClick(index) }
                     )
                 }
@@ -54,9 +54,7 @@ private fun NumberButton(
         ,
         onClick = onClick
     ) {
-        Text(
-            text = text,
-        )
+        Text(text = text)
     }
 }
 
@@ -64,8 +62,11 @@ private fun NumberButton(
 @Composable
 private fun Preview(){
     NumbersTheme {
+
+        val viewModel = NumbersViewModel()
+
         LowerUI(
-            data = Utils.genRandomNumbers(start = 1, end = 25),
+            data = viewModel.displayNumbers,
             onNumberClick = {}
         )
     }
