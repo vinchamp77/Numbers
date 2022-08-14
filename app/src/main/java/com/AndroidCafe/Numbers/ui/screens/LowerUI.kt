@@ -15,7 +15,7 @@ import com.AndroidCafe.Numbers.ui.theme.NumbersTheme
 fun LowerUI(
     modifier: Modifier = Modifier,
     data: List<Int>,
-    onClick: (Int) -> Unit,
+    onNumberClick: (Int) -> Unit,
 ) {
     Column(
         modifier = modifier,
@@ -34,7 +34,7 @@ fun LowerUI(
                     NumberButton(
                         //modifier = modifier.fillMaxSize(),
                         text = data[index].toString(),
-                        onClick = { onClick(index) }
+                        onClick = { onNumberClick(index) }
                     )
                 }
             }
@@ -66,7 +66,7 @@ private fun Preview(){
     NumbersTheme {
         LowerUI(
             data = Utils.genRandomNumbers(start = 1, end = 25),
-            onClick = {}
+            onNumberClick = {}
         )
     }
 }
