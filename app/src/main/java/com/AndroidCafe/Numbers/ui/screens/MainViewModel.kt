@@ -27,6 +27,7 @@ class MainViewModel(private val dataStore: DataStore<Preferences>) : ViewModel()
         .map { preferences ->
             preferences[PreferencesKeys.BEST_TIME] ?: 0f
         }
+
     var bestTime by mutableStateOf(0f)
         private set
 
@@ -35,6 +36,9 @@ class MainViewModel(private val dataStore: DataStore<Preferences>) : ViewModel()
 
     private val _displayNumbers = mutableStateListOf<Number>()
     val displayNumbers:List<Number> = _displayNumbers
+
+    var showResult by mutableStateOf(false)
+        private set
 
     private lateinit var randomNumbers:List<Int>
     private var lastIndex by Delegates.notNull<Int>()
@@ -111,7 +115,7 @@ class MainViewModel(private val dataStore: DataStore<Preferences>) : ViewModel()
         randomNumbers = Utils.genRandomNumbers()
 
         _displayNumbers.clear()
-        //fromIndex and toIndex are exclusive
+        //toIndex are exclusive
         val randomValues = randomNumbers.subList(fromIndex = 0, toIndex = 25)
         for(value in randomValues) {
             _displayNumbers.add(Number(value))

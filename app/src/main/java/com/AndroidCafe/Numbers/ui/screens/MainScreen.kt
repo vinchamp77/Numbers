@@ -15,7 +15,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.AndroidCafe.Numbers.ui.theme.NumbersTheme
 
-private val Context.dataStore by preferencesDataStore(
+val Context.dataStore by preferencesDataStore(
     name = "settings",
 )
 
@@ -43,10 +43,11 @@ fun MainScreen() {
         )
         LowerUI(
             modifier = Modifier.weight(0.6f),
-            data = viewModel.displayNumbers,
+            numbers = viewModel.displayNumbers,
             onNumberClick = { index ->
                 viewModel.onNumberClick(index)
-            }
+            },
+            showResult = viewModel.showResult
         )
     }
 }

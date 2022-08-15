@@ -17,9 +17,23 @@ import com.AndroidCafe.Numbers.ui.theme.NumbersTheme
 @Composable
 fun LowerUI(
     modifier: Modifier = Modifier,
-    data: List<Number>,
+    numbers: List<Number>,
     onNumberClick: (Int) -> Unit,
+    showResult: Boolean
 ) {
+    if (!showResult) {
+        NumberButtons(modifier, numbers, onNumberClick)
+    } else {
+        ResultUI()
+    }
+}
+
+@Composable
+private fun NumberButtons(
+    modifier: Modifier,
+    numbers: List<Number>,
+    onNumberClick: (Int) -> Unit,
+){
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.SpaceBetween,
@@ -33,9 +47,8 @@ fun LowerUI(
             ) {
                 for(col in 0..4) {
                     val index = row * 5 + col
-                    val number = data[index]
+                    val number = numbers[index]
                     NumberButton(
-                        //modifier = modifier.fillMaxSize(),
                         text = number.value.toString(),
                         onClick = { onNumberClick(index) },
                         hidden = number.hidden,
@@ -72,20 +85,25 @@ private fun NumberButton(
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//private fun Preview(){
-//    NumbersTheme {
-//
-//        LocalContext.current.date
-//        val viewModel = MainViewModel(dataStore = null)
-//
-//        LowerUI(
-//            data = viewModel.displayNumbers,
-//            onNumberClick = {}
-//        )
-//    }
-//}
+@Composable
+private fun ResultUI(){
+
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun NumbersPreview(){
+    NumbersTheme {
+
+        val viewModel = MainViewModel(dataStore = LocalContext.current.dataStore)
+
+        LowerUI(
+            numbers = viewModel.displayNumbers,
+            onNumberClick = {},
+            showResult = false,
+        )
+    }
+}
 
 @Preview(showBackground = true)
 @Composable
@@ -94,6 +112,21 @@ private fun NumberButtonPreview(){
         NumberButton(
             text = "88",
             onClick = {}
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ResultPreview(){
+    NumbersTheme {
+
+        val viewModel = MainViewModel(dataStore = LocalContext.current.dataStore)
+
+        LowerUI(
+            numbers = viewModel.displayNumbers,
+            onNumberClick = {},
+            showResult = true,
         )
     }
 }
