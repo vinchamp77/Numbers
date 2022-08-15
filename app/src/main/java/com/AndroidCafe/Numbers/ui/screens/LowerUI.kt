@@ -1,9 +1,8 @@
 package com.AndroidCafe.Numbers.ui.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
@@ -12,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.AndroidCafe.Numbers.ui.theme.NumbersTheme
 
 @Composable
@@ -24,7 +24,7 @@ fun LowerUI(
     if (!showResult) {
         NumberButtons(modifier, numbers, onNumberClick)
     } else {
-        ResultUI()
+        ResultUI(modifier)
     }
 }
 
@@ -77,8 +77,8 @@ private fun NumberButton(
     Button(
         onClick = onClick,
         modifier = Modifier
-            .width(70.dp)
-            .height(70.dp),
+            .width(65.dp)
+            .height(65.dp),
         colors = buttonColors,
     ) {
         Text(text = text)
@@ -86,8 +86,31 @@ private fun NumberButton(
 }
 
 @Composable
-private fun ResultUI(){
+private fun ResultUI(modifier: Modifier){
+    val backgroundColor = MaterialTheme.colors.primary
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(color = backgroundColor)
+            .padding(15.dp)
+        ,
+        verticalArrangement = Arrangement.SpaceBetween,
+    ) {
+        ResultText("10 - 19 sec: Impossible!")
+        ResultText("20 - 29 sec: Lia!")
+        ResultText("30 - 39 sec: You're special!")
+        ResultText("40 - 59 sec: Expert")
+        ResultText("60 - 79 sec: Normal")
+        ResultText("80 - 89 sec: You're getting old!")
+        ResultText("More than 90 sec: You're old!")
 
+    }
+}
+
+@Composable
+private fun ResultText(text:String) {
+    val textColor = contentColorFor(MaterialTheme.colors.primary)
+    Text(text = text, fontSize = 20.sp, color = textColor)
 }
 
 @Preview(showBackground = true)

@@ -75,9 +75,11 @@ class MainViewModel(private val dataStore: DataStore<Preferences>) : ViewModel()
         }
 
         if(currentNumber == 50) {
+            cancelTimer()
             if(bestTime == 0f || currentTime < bestTime) {
                 updateBestTimePref(currentTime)
             }
+            showResult = true
         } else {
             ++currentNumber
         }
@@ -92,7 +94,6 @@ class MainViewModel(private val dataStore: DataStore<Preferences>) : ViewModel()
     }
 
     private fun startTimer() {
-        cancelTimer()
         timerJob = viewModelScope.launch {
             while(true) {
                 delay(100)
@@ -103,12 +104,13 @@ class MainViewModel(private val dataStore: DataStore<Preferences>) : ViewModel()
 
     private fun cancelTimer() {
         timerJob?.cancel()
-        currentTime = 0f
     }
 
     private fun reset() {
         cancelTimer()
+        currentTime = 0f
         generateRandomNumbers()
+        showResult = false
     }
 
     private fun generateRandomNumbers(){

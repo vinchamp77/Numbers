@@ -11,12 +11,12 @@ val Typography = Typography(
     body1 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.ExtraBold,
-        fontSize = 30.sp
+        fontSize = 28.sp
     ),
 
     button = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.ExtraBold,
-        fontSize = 30.sp
+        fontSize = 28.sp
     ),
 )
