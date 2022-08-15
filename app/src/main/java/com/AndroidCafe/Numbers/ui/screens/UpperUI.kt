@@ -16,16 +16,25 @@ import org.w3c.dom.Text
 @Composable
 fun UpperUI(
     modifier: Modifier = Modifier,
-    currentTime: String,
+    bestTime: Float,
+    currentTime: Float,
     onRestartClick: () -> Unit,
 ) {
+    val bestTimeText =
+        if(bestTime == 0f) {
+            "?"
+        } else {
+            "%.1f".format(bestTime)
+        }
+    val currentTimeText = "%.1f".format(currentTime)
+
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text(text = "YOUR BEST TIME: ?")
-        Text(text = currentTime)
+        Text(text = "YOUR BEST TIME: $bestTimeText")
+        Text(text = currentTimeText)
         Button(onClick = onRestartClick) {
             Text(text = "RESTART")
         }
@@ -41,7 +50,8 @@ fun UpperUI(
 private fun Preview() {
     NumbersTheme {
         UpperUI(
-            currentTime = "0.0",
+            bestTime = 0f,
+            currentTime = 0f,
             onRestartClick = {}
         )
     }

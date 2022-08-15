@@ -61,4 +61,5 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
 
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.2-alpha"
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 }
