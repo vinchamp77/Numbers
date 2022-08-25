@@ -97,7 +97,7 @@ private fun ResultUI(modifier: Modifier){
         verticalArrangement = Arrangement.SpaceBetween,
     ) {
         ResultText("10 - 19 sec: Impossible!")
-        ResultText("20 - 29 sec: Lia!")
+        ResultText("20 - 29 sec: Liar!")
         ResultText("30 - 39 sec: You're special!")
         ResultText("40 - 59 sec: Expert")
         ResultText("60 - 79 sec: Normal")
